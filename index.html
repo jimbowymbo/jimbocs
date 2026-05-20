@@ -297,10 +297,10 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
       </svg>
       <div><div class="logo-jimbo">Jimbo</div><div class="logo-sub">Cocktail Society</div></div>
     </div>
-    <div class="user-badge" id="headerUser" onclick="logout()" title="Cerrar sesión" style="cursor:pointer"></div>
     <div class="search-wrap"><input type="text" id="searchInput" placeholder="Buscar cocktail o ingrediente..." oninput="render()"></div>
     <button class="icon-btn" onclick="openQuiz()" title="¿Qué me apetece?" style="font-weight:700;font-size:20px">?</button>
     <button class="icon-btn" onclick="openConfig()" title="Configuración">⚙</button>
+    <button class="icon-btn" onclick="logout()" title="Cerrar sesión" style="font-size:16px">⏻</button>
   </div>
 </header>
 <div class="controls">
@@ -969,7 +969,7 @@ window.createUser=async()=>{
 };
 async function loginAs(username,pinHashArr){
   currentUser=username;currentUserPinHash=pinHashArr;
-  document.getElementById('headerUser').textContent=username;
+  
   setProgress(75,'Cargando tu colección…');
   document.getElementById('splashLoading').classList.remove('hidden');
   document.getElementById('userScreen').classList.add('hidden');
