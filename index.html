@@ -661,16 +661,27 @@ window.setTheme=m=>{
 
 async function loadUserData(){
   setProgress(80,'Cargando tu perfil…');
-  // El catálogo base viene siempre del IBA_SEED local, no de Firebase
-  const[rM,rI]=await Promise.all([fbGet(uPath('my')),fbGet(uPath('ings'))]);
+  const[rOverrides,rM,rI]=await Promise.all([
+    fbGet('jimbo_cocktails'),   // overrides compartidos (fotos, ediciones IBA)
+    fbGet(uPath('my')),
+    fbGet(uPath('ings'))
+  ]);
+  // Base = IBA_SEED + overrides de Firebase para cócteles modificados
+  const overrides = rOverrides || {};
+  const base = IBA_SEED.map(c => overrides[c.id] ? {...c,...overrides[c.id]} : c);
   const uc=await fbGet(uPath('custom_cocktails'));
-  cocktails=uc?[...IBA_SEED,...Object.values(uc)]:[...IBA_SEED];
+  cocktails=uc?[...base,...Object.values(uc)]:[...base];
   cocktails.sort((a,b)=>a.id-b.id);
   myData=rM?(typeof rM==='object'?rM:JSON.parse(rM)):{};
   myIngredients=rI&&Array.isArray(rI)?new Set(rI):new Set();
 }
 
-async function saveCocktailToDb(c){if(!isIBA(c))await fbSet(`${uPath('custom_cocktails')}/${c.id}`,c);}
+// IBA: guarda solo los campos modificados en Firebase (override compartido)
+// Custom: guarda en el espacio personal del usuario
+async function saveCocktailToDb(c){
+  if(isIBA(c)) await fbSet(`jimbo_cocktails/${c.id}`,c);
+  else await fbSet(`${uPath('custom_cocktails')}/${c.id}`,c);
+}
 async function deleteCocktailFromDb(c){if(!isIBA(c))await fbSet(`${uPath('custom_cocktails')}/${c.id}`,null);}
 const saveMyData=()=>fbSet(uPath('my'),myData);
 
@@ -865,14 +876,29 @@ function renderQuiz(){
     ${quizStep>0?`<button onclick="quizStep--;renderQuiz()" style="margin-top:1rem;background:transparent;border:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:'Jost',sans-serif">← Anterior</button>`:''}
   </div>`;
 }
-function scoreMatch(c){const q=c.q||{};let s=0;if(quizAnswers.sabor==='any'||(q.sabor||[]).includes(quizAnswers.sabor))s+=2;if(quizAnswers.alcohol==='any'||(q.alcohol||[]).includes(quizAnswers.alcohol))s+=2;if(quizAnswers.base==='any'||(q.base||[]).includes(quizAnswers.base))s+=2;return s;}
+function scoreMatch(c){
+  const q=c.q||{};let s=0;
+  if(quizAnswers.sabor==='any'||(q.sabor||[]).includes(quizAnswers.sabor))s+=2;
+  if(quizAnswers.alcohol==='any'||(q.alcohol||[]).includes(quizAnswers.alcohol))s+=2;
+  return s;
+}
 function showQuizResult(){
-  const available=myIngredients.size?cocktails.filter(c=>canMake(c)):cocktails;
-  const pool_base=available.length?available:cocktails;
-  const scored=pool_base.map(c=>({c,s:scoreMatch(c)})).sort((a,b)=>b.s-a.s||Math.random()-.5);
-  const top=scored[0]?.s??0,pool=scored.filter(x=>x.s===top);
-  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-  const picks=pool.slice(0,3).map(x=>x.c);
+  // 1. Solo cócteles que el usuario puede preparar
+  let pool=myIngredients.size?cocktails.filter(c=>canMake(c)):cocktails;
+  if(!pool.length)pool=cocktails; // fallback si despensa vacía
+
+  // 2. Filtro DURO por base: si el usuario eligió una base concreta,
+  //    solo se muestran cócteles que la tengan
+  if(quizAnswers.base!=='any'){
+    const filtered=pool.filter(c=>(c.q?.base||[]).includes(quizAnswers.base));
+    if(filtered.length)pool=filtered; // solo aplica si hay resultados
+  }
+
+  // 3. Puntuar por sabor y alcohol
+  const scored=pool.map(c=>({c,s:scoreMatch(c)})).sort((a,b)=>b.s-a.s||Math.random()-.5);
+  const top=scored[0]?.s??0,topPool=scored.filter(x=>x.s===top);
+  for(let i=topPool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[topPool[i],topPool[j]]=[topPool[j],topPool[i]];}
+  const picks=topPool.slice(0,3).map(x=>x.c);
   if(picks.length<3){const rest=scored.filter(x=>x.s<top);for(let i=0;picks.length<3&&i<rest.length;i++)picks.push(rest[i].c);}
   document.getElementById('quizBody').innerHTML=`<div style="padding:1.25rem;background:var(--cream)">
     <div style="text-align:center;margin-bottom:1.25rem"><div style="font-size:2rem">✨</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text)">Puedes preparar esta noche</div><div style="font-size:12px;color:var(--text3);margin-top:4px">Con los ingredientes de tu despensa</div></div>
