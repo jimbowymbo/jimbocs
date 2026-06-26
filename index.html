@@ -52,38 +52,26 @@ body.dark-mode .theme-btn.active{background:#243447;color:#E0C080}
 body.dark-mode #quizBody,body.dark-mode #quizBody>div{background:var(--cream) !important}
 body.dark-mode #quizBody button{background:#1a2332 !important;border-color:#354A5E !important;color:#C8B89A !important}
 body.dark-mode #quizBody button:hover{background:#243447 !important;border-color:var(--gold) !important;color:#E8DFD0 !important}
-
-/* Session warning */
 #sessionWarning{display:none;position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:#8A6E3E;color:#fff;padding:.6rem 1.2rem;font-size:12px;font-family:'Jost',sans-serif;z-index:9999;border-radius:2px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 #sessionWarning button{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff;padding:2px 10px;font-size:11px;cursor:pointer;margin-left:10px;font-family:'Jost',sans-serif}
-
-/* Theme toggle */
 .theme-toggle{display:flex;gap:0;border:1px solid var(--border2);border-radius:3px;overflow:hidden;width:fit-content}
 .theme-btn{padding:8px 20px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Jost',sans-serif;font-weight:400;transition:all .2s;background:transparent;color:var(--text3)}
 .theme-btn.active{background:var(--navy);color:var(--gold2)}
-
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;font-weight:300}
-
-/* Splash */
 #splashLoading{position:fixed;inset:0;background:var(--navy);z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
 #splashLoading.hidden{display:none}
 .splash-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold2);letter-spacing:3px}
 .splash-bar-wrap{width:260px;height:3px;background:#2d3f52;border-radius:2px}
 .splash-bar{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width .3s}
 .splash-msg{font-size:11px;color:var(--slate);letter-spacing:1px}
-
-/* User screen */
 #userScreen{position:fixed;inset:0;background:var(--navy);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
 #userScreen.hidden{display:none}
-
-/* Login animations */
 @keyframes drawStroke{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
 @keyframes glowDot{0%,100%{opacity:.5}50%{opacity:1}}
 @keyframes shimmer{from{opacity:0;letter-spacing:8px}to{opacity:1;letter-spacing:4px}}
 @keyframes subFade{from{opacity:0;letter-spacing:6px}to{opacity:1;letter-spacing:3px}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
 .us-logo{text-align:center;margin-bottom:2.5rem}
 .us-logo-svg polygon{stroke-dasharray:200;stroke-dashoffset:200;animation:drawStroke 1s cubic-bezier(.4,0,.2,1) .2s forwards}
 .us-logo-svg line{stroke-dasharray:50;stroke-dashoffset:50;animation:drawStroke .5s ease 1s forwards}
@@ -101,14 +89,12 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);min
 .nuf-btn:hover{background:var(--gold)}
 .nuf-back{background:transparent;border:none;color:var(--slate);font-size:11px;cursor:pointer;font-family:'Jost',sans-serif;letter-spacing:1px;text-transform:uppercase;width:100%;margin-top:4px}
 .nuf-err{font-size:11px;color:#c47070;min-height:14px;margin-bottom:8px;font-style:italic}
-
 #app{display:none}
 header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;top:0;z-index:100}
 .header-top{display:flex;align-items:center;gap:10px;padding:.6rem 1rem .5rem}
 .logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .logo-jimbo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--gold2);letter-spacing:3px;text-transform:uppercase}
 .logo-sub{font-size:11px;color:var(--slate);letter-spacing:3px;text-transform:uppercase}
-.user-badge{font-size:12px;color:var(--gold3);letter-spacing:1.5px;text-transform:uppercase;border:1px solid #3a5068;padding:2px 8px;flex-shrink:0}
 .search-wrap{flex:1;min-width:0}
 .search-wrap input{width:100%;background:#243447;border:1px solid #3a5068;color:#e8dfc8;padding:9px 14px;border-radius:2px;font-size:15px;outline:none;font-family:'Jost',sans-serif;font-weight:300}
 .search-wrap input::placeholder{color:#556b80}
@@ -133,8 +119,6 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
 .btn-danger{border-color:#c4a0a0;color:#8a4040}
 .btn-danger:hover{background:#8a4040;border-color:#8a4040;color:#fff}
 .btn-full{width:100%}
-
-/* Grid & Cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1px;background:var(--border)}
 .card{background:var(--cream);cursor:pointer;position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
@@ -142,19 +126,15 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
 .card:hover .card-img{transform:scale(1.05)}
 .card-img-ph{width:100%;aspect-ratio:1;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
 .card-body{padding:10px 12px 14px;position:relative}
-
 .card-name{font-family:'Cormorant Garamond',serif;font-size:1.125rem;font-weight:600;color:var(--navy);margin-bottom:1px;line-height:1.2}
 .card-cat{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px}
 .card-badges{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;align-items:center}
 .badge-tried{background:var(--navy);color:var(--gold2);font-size:11px;padding:2px 6px;letter-spacing:1px;text-transform:uppercase}
 .badge-stars{color:var(--gold);font-size:13px}
 .card-rating{position:absolute;top:6px;right:6px;background:#1C2B3Acc;padding:2px 6px;font-size:12px;color:var(--gold2);letter-spacing:1px}
-
-/* Modal */
 .overlay{display:none;position:fixed;inset:0;background:#1C2B3Acc;z-index:200;overflow-y:auto;padding:.5rem}
 .overlay.open{display:flex;align-items:flex-start;justify-content:center}
 .modal{background:var(--cream);border:1px solid var(--border2);width:100%;max-width:660px;overflow:hidden;margin:auto}
-
 .modal-header{position:relative}
 .modal-img{width:100%;height:210px;object-fit:cover;display:block}
 .modal-img-ph{width:100%;height:210px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:4rem}
@@ -327,7 +307,6 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
 <div class="grid" id="grid"></div>
 <div class="empty" id="emptyMsg" style="display:none">No se encontraron cocktails.</div>
 
-<!-- COCKTAIL MODAL -->
 <div class="overlay" id="overlay" onclick="closeModal(event)">
   <div class="modal">
     <div class="modal-header"><div id="modalImgWrap"></div><button class="modal-close" onclick="closeModalDirect()">✕</button></div>
@@ -393,7 +372,6 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
   </div>
 </div>
 
-<!-- QUIZ -->
 <div class="overlay" id="quizOverlay" onclick="closeQuizModal(event)">
   <div class="config-modal" style="max-width:500px;max-height:85vh">
     <div class="config-header"><div class="config-title">¿Qué me apetece hoy?</div><button class="modal-close" onclick="closeQuiz()">✕</button></div>
@@ -401,7 +379,6 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
   </div>
 </div>
 
-<!-- CONFIG -->
 <div class="overlay" id="configOverlay" onclick="closeConfigModal(event)">
   <div class="config-modal">
     <div class="config-header"><div class="config-title">⚙ Configuración</div><button class="modal-close" onclick="closeConfig()">✕</button></div>
@@ -466,7 +443,6 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
 </div>
 </div>
 
-<!-- PIN -->
 <div class="pin-overlay" id="pinOverlay">
   <div class="pin-modal">
     <div class="pin-title" id="pinTitle">Acceso</div>
@@ -489,57 +465,18 @@ header{background:var(--navy);border-bottom:1px solid #2d3f52;position:sticky;to
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
 import { getDatabase, ref, set, get, child } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js';
 
-const FB = {
-  apiKey:"AIzaSyCequ_IRHIuPfsceCEnKqgM29Nq9QEA6EY",
-  authDomain:"jimbococktails.firebaseapp.com",
-  databaseURL:"https://jimbococktails-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId:"jimbococktails",
-  storageBucket:"jimbococktails.firebasestorage.app",
-  messagingSenderId:"81027495505",
-  appId:"1:81027495505:web:ad0b49a3badea79909aa70"
-};
-const app = initializeApp(FB);
-const db  = getDatabase(app);
-const dbRef = ref(db);
+const FB={apiKey:"AIzaSyCequ_IRHIuPfsceCEnKqgM29Nq9QEA6EY",authDomain:"jimbococktails.firebaseapp.com",databaseURL:"https://jimbococktails-default-rtdb.europe-west1.firebasedatabase.app",projectId:"jimbococktails",storageBucket:"jimbococktails.firebasestorage.app",messagingSenderId:"81027495505",appId:"1:81027495505:web:ad0b49a3badea79909aa70"};
+const db=getDatabase(initializeApp(FB));
+const dbRef=ref(db);
+const fbGet=async p=>{try{const s=await get(child(dbRef,p));return s.exists()?s.val():null;}catch{return null;}};
+const fbSet=async(p,v)=>{try{await set(ref(db,p),v);}catch{}};
+const setProgress=(pct,msg)=>{document.getElementById('splashBar').style.width=pct+'%';document.getElementById('splashMsg').textContent=msg;};
+const sha256=async s=>{try{const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(buf));}catch{return[];}};
+const hashEq=async(s,h)=>{if(!h||!Array.isArray(h))return false;const a=await sha256(s);return a.length===h.length&&a.every((b,i)=>b===h[i]);};
+const escHtml=s=>typeof s==='string'?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'):'';
+const sanitize=s=>{if(typeof s!=='string')return '';return typeof DOMPurify!=='undefined'?DOMPurify.sanitize(s,{ALLOWED_TAGS:[],ALLOWED_ATTR:[]}):escHtml(s);};
 
-const fbGet = async p => { try{ const s=await get(child(dbRef,p)); return s.exists()?s.val():null; }catch{ return null; } };
-const fbSet = async (p,v) => { try{ await set(ref(db,p),v); }catch{ } };
-
-const setProgress = (pct,msg) => {
-  document.getElementById('splashBar').style.width = pct+'%';
-  document.getElementById('splashMsg').textContent = msg;
-};
-
-// SHA-256
-const sha256 = async s => {
-  try {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-    return Array.from(new Uint8Array(buf));
-  } catch { return []; }
-};
-const hashEq = async (s,h) => {
-  if(!h||!Array.isArray(h)) return false;
-  const a = await sha256(s);
-  return a.length===h.length && a.every((b,i)=>b===h[i]);
-};
-
-// Sanitize
-const escHtml = s => typeof s==='string'
-  ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')
-  : '';
-const sanitize = s => {
-  if(typeof s!=='string') return '';
-  return typeof DOMPurify!=='undefined'
-    ? DOMPurify.sanitize(s,{ALLOWED_TAGS:[],ALLOWED_ATTR:[]})
-    : escHtml(s);
-};
-
-
-
-
-
-// ── DATOS ────────────────────────────────────────────────────
-const IBA_SEED = [
+const IBA_SEED=[
 {id:1,name:"Alexander",cat:"Los Inolvidables",emoji:"🥛",liquors:["Cognac"],q:{sabor:["cremoso"],alcohol:["medio"],base:["otros"]},taste:"Cremoso, dulce y con matices de cacao y nuez moscada.",historia:"Creado a principios del siglo XX, evolucionó hacia el Brandy Alexander en los años 20. Favorito de John Lennon.",ingredients:[{n:"Cognac",a:"30 ml"},{n:"Crème de cacao",a:"30 ml"},{n:"Nata",a:"30 ml"}],instructions:"Agita con hielo en coctelera. Cuela en copa. Espolvorea nuez moscada.",glass:"Copa de cóctel"},
 {id:2,name:"Americano",cat:"Los Inolvidables",emoji:"🍊",liquors:["Campari","Vermouth"],q:{sabor:["amargo"],alcohol:["suave"],base:["otros"]},taste:"Amargo, herbal y refrescante con notas cítricas.",historia:"Nacido en el Caffè Campari de Milán, 1860. Primer cocktail pedido por James Bond.",ingredients:[{n:"Campari",a:"30 ml"},{n:"Vermouth dulce",a:"30 ml"},{n:"Agua con gas",a:"c/s"}],instructions:"Vierte sobre hielo en highball. Completa con agua con gas. Decora con naranja.",glass:"Highball"},
 {id:3,name:"Angel Face",cat:"Los Inolvidables",emoji:"😇",liquors:["Gin","Brandy"],q:{sabor:["dulce","fresco"],alcohol:["medio"],base:["gin"]},taste:"Frutal, floral y elegante con fondo de manzana.",historia:"Creado por Frank Meier en el Ritz de París durante la Prohibición.",ingredients:[{n:"Gin",a:"30 ml"},{n:"Licor de albaricoque",a:"30 ml"},{n:"Calvados",a:"30 ml"}],instructions:"Agita con hielo. Cuela en copa.",glass:"Copa de cóctel"},
@@ -565,7 +502,6 @@ const IBA_SEED = [
 {id:23,name:"Paper Plane",cat:"Nueva Era",emoji:"✈️",liquors:["Bourbon"],q:{sabor:["amargo","fresco"],alcohol:["medio"],base:["whisky"]},taste:"Perfectamente equilibrado: amargo, dulce, ácido y herbáceo.",historia:"Sam Ross, Milk & Honey, Nueva York, 2007.",ingredients:[{n:"Bourbon",a:"22.5 ml"},{n:"Aperol",a:"22.5 ml"},{n:"Amaro Nonino",a:"22.5 ml"},{n:"Zumo de limón",a:"22.5 ml"}],instructions:"Agita con hielo. Cuela en copa.",glass:"Copa de cóctel"},
 {id:24,name:"Paloma",cat:"Nueva Era",emoji:"🕊️",liquors:["Tequila"],q:{sabor:["fresco","amargo"],alcohol:["suave"],base:["tequila"]},taste:"Cítrico, ligeramente amargo y refrescante.",historia:"Don Javier Delgado Corona, La Capilla, Tequila, Jalisco.",ingredients:[{n:"Tequila",a:"50 ml"},{n:"Zumo de pomelo",a:"100 ml"},{n:"Zumo de lima",a:"10 ml"},{n:"Sal",a:"una pizca"}],instructions:"Escarcha el borde con sal. Vierte todo sobre hielo. Remueve.",glass:"Highball"},
 {id:25,name:"Porn Star Martini",cat:"Nueva Era",emoji:"🌟",liquors:["Vodka"],q:{sabor:["dulce","fresco"],alcohol:["medio"],base:["vodka"]},taste:"Dulce, tropical y festivo.",historia:"Douglas Ankrah, Townhouse Bar de Londres, 2002.",ingredients:[{n:"Vodka de vainilla",a:"50 ml"},{n:"Licor de maracuyá",a:"25 ml"},{n:"Puré de maracuyá",a:"50 ml"},{n:"Zumo de lima",a:"10 ml"},{n:"Sirope de vainilla",a:"5 ml"},{n:"Prosecco aparte",a:"25 ml"}],instructions:"Agita todo excepto Prosecco con hielo. Cuela en copa. Sirve Prosecco en vasito aparte.",glass:"Copa de martini"},
-// ── Nuevos de thebarspoon.com ─────────────────────────────
 {id:26,name:"Gimlet",cat:"Los Inolvidables",emoji:"🍋",liquors:["Gin"],q:{sabor:["fresco"],alcohol:["medio"],base:["gin"]},taste:"Nítido, cítrico y refrescantemente sencillo.",historia:"Trazado a la Royal Navy británica, el Rear Admiral Sir Thomas Gimlette lo mezcló con lima para hacer más palatable la ración de cítricos de la tripulación.",ingredients:[{n:"Gin",a:"60 ml"},{n:"Zumo de lima fresco",a:"23 ml"},{n:"Sirope de azúcar",a:"23 ml"}],instructions:"Agita con hielo. Cuela doble en copa. Decora con rueda de lima.",glass:"Copa de cóctel"},
 {id:27,name:"French 75",cat:"Los Inolvidables",emoji:"🥂",liquors:["Gin","Champagne"],q:{sabor:["fresco"],alcohol:["medio"],base:["gin"]},taste:"Efervescente, cítrico y elegante.",historia:"Popularizado en el New York Bar de París en 1915 y nombrado en honor al cañón francés de 75 mm. Aparece en la película Casablanca.",ingredients:[{n:"Gin",a:"30 ml"},{n:"Zumo de limón",a:"15 ml"},{n:"Sirope de azúcar",a:"15 ml"},{n:"Champagne",a:"60 ml"}],instructions:"Agita gin, zumo y sirope con hielo. Cuela en copa flauta. Completa con champagne. Decora con twist de limón.",glass:"Copa flauta"},
 {id:28,name:"Tom Collins",cat:"Los Inolvidables",emoji:"🍋",liquors:["Gin"],q:{sabor:["fresco"],alcohol:["suave"],base:["gin"]},taste:"Largo, cítrico y efervescente.",historia:"Surgido en Londres a mediados del siglo XIX, popularizado en Estados Unidos por Jerry Thomas en su Bartenders Guide de 1876.",ingredients:[{n:"Gin",a:"45 ml"},{n:"Zumo de limón",a:"30 ml"},{n:"Sirope de azúcar",a:"15 ml"},{n:"Agua con gas",a:"90 ml"}],instructions:"Agita gin, zumo y sirope con hielo. Cuela en highball con hielo. Completa con agua con gas. Decora con rodaja de limón y cereza.",glass:"Highball"},
@@ -673,53 +609,32 @@ const IBA_SEED = [
 {id:130,name:"Yvonne's Reprise",cat:"Nueva Era",emoji:"🎻",liquors:["Gin","Vermouth"],q:{sabor:["fresco","amargo"],alcohol:["medio"],base:["gin"]},taste:"Floral, ligeramente dulce de cassis y herbáceo.",historia:"Creación de Anders Erickson.",ingredients:[{n:"Gin",a:"45 ml"},{n:"Crème de cassis",a:"15 ml"},{n:"Vermouth Blanc",a:"22 ml"},{n:"Zumo de limón",a:"15 ml"}],instructions:"Agita con hielo. Cuela en copa helada. Decora con twist de limón.",glass:"Copa de cóctel"},
 ];
 
-// ── ESTADO ───────────────────────────────────────────────────
-let cocktails=[], currentUser=null, currentUserPinHash=null;
-let myData={}, myIngredients=new Set();
-let selectedLiquors=new Set(), selectedCat='all';
-let currentId=null, currentRating=0, editImgBase64=null;
-let historiaLoaded={}, quizAnswers={}, quizStep=0;
-let _pinBuf='', _pinTarget=null, _pendingLoginUser=null;
-let _pinFailCount=0, _pinLocked=false, _pinLockTimer=null;
+let cocktails=[],currentUser=null,currentUserPinHash=null,myData={},myIngredients=new Set();
+let selectedLiquors=new Set(),selectedCat='all',currentId=null,currentRating=0,editImgBase64=null;
+let historiaLoaded={},quizAnswers={},quizStep=0;
+let _pinBuf='',_pinTarget=null,_pendingLoginUser=null,_pinFailCount=0,_pinLocked=false,_pinLockTimer=null;
 let gridSize=1;
+const SESSION_MS=30*60*1000,WARN_MS=25*60*1000;
+let _sesTimer=null,_sesWarn=null,_sesInterval=null;
 
-// Session timeout
-const SESSION_MS=30*60*1000, WARN_MS=25*60*1000;
-let _sesTimer=null, _sesWarn=null, _sesInterval=null;
-
-window.resetSessionTimer = function() {
-  clearTimeout(_sesTimer); clearTimeout(_sesWarn); clearInterval(_sesInterval);
+window.resetSessionTimer=function(){
+  clearTimeout(_sesTimer);clearTimeout(_sesWarn);clearInterval(_sesInterval);
   document.getElementById('sessionWarning').style.display='none';
-  if(!currentUser) return;
-  _sesWarn = setTimeout(()=>{
+  if(!currentUser)return;
+  _sesWarn=setTimeout(()=>{
     let s=Math.round((SESSION_MS-WARN_MS)/1000);
-    const w=document.getElementById('sessionWarning'), cd=document.getElementById('sessionCountdown');
-    w.style.display='block'; cd.textContent=s+'s';
-    _sesInterval=setInterval(()=>{ s--; cd.textContent=s+'s'; if(s<=0) clearInterval(_sesInterval); },1000);
-  }, WARN_MS);
-  _sesTimer = setTimeout(()=>{ clearInterval(_sesInterval); document.getElementById('sessionWarning').style.display='none'; logout(true); }, SESSION_MS);
+    const w=document.getElementById('sessionWarning'),cd=document.getElementById('sessionCountdown');
+    w.style.display='block';cd.textContent=s+'s';
+    _sesInterval=setInterval(()=>{s--;cd.textContent=s+'s';if(s<=0)clearInterval(_sesInterval);},1000);
+  },WARN_MS);
+  _sesTimer=setTimeout(()=>{clearInterval(_sesInterval);document.getElementById('sessionWarning').style.display='none';logout(true);},SESSION_MS);
 };
-['click','keydown','mousemove','touchstart','scroll'].forEach(ev=>
-  document.addEventListener(ev,()=>{ if(currentUser) resetSessionTimer(); },{passive:true})
-);
+['click','keydown','mousemove','touchstart','scroll'].forEach(ev=>document.addEventListener(ev,()=>{if(currentUser)resetSessionTimer();},{passive:true}));
 
-// Rate limiting
-const RATE={max:5, winMs:15*60*1000};
-async function checkRate(u){
-  const d=await fbGet(`jimbo_login_attempts/${u}`), now=Date.now();
-  if(!d) return {ok:true};
-  if(d.lockedUntil>now){ const m=Math.ceil((d.lockedUntil-now)/60000); return {ok:false,msg:`Demasiados intentos. Espera ${m} min.`}; }
-  if(now-d.firstAttempt>RATE.winMs){ await fbSet(`jimbo_login_attempts/${u}`,null); return {ok:true}; }
-  if(d.count>=RATE.max){ await fbSet(`jimbo_login_attempts/${u}`,{...d,lockedUntil:now+RATE.winMs}); return {ok:false,msg:'Demasiados intentos. Espera 15 minutos.'}; }
-  return {ok:true};
-}
-async function recordFail(u){
-  const d=await fbGet(`jimbo_login_attempts/${u}`), now=Date.now();
-  if(!d||now-(d.firstAttempt||now)>RATE.winMs){ await fbSet(`jimbo_login_attempts/${u}`,{count:1,firstAttempt:now,lockedUntil:0}); return; }
-  const nc=(d.count||0)+1;
-  await fbSet(`jimbo_login_attempts/${u}`,{...d,count:nc,lockedUntil:nc>=RATE.max?now+RATE.winMs:0});
-}
-const clearFails = u => fbSet(`jimbo_login_attempts/${u}`,null);
+const RATE={max:5,winMs:15*60*1000};
+async function checkRate(u){const d=await fbGet(`jimbo_login_attempts/${u}`),now=Date.now();if(!d)return{ok:true};if(d.lockedUntil>now){const m=Math.ceil((d.lockedUntil-now)/60000);return{ok:false,msg:`Demasiados intentos. Espera ${m} min.`};}if(now-d.firstAttempt>RATE.winMs){await fbSet(`jimbo_login_attempts/${u}`,null);return{ok:true};}if(d.count>=RATE.max){await fbSet(`jimbo_login_attempts/${u}`,{...d,lockedUntil:now+RATE.winMs});return{ok:false,msg:'Demasiados intentos. Espera 15 minutos.'};}return{ok:true};}
+async function recordFail(u){const d=await fbGet(`jimbo_login_attempts/${u}`),now=Date.now();if(!d||now-(d.firstAttempt||now)>RATE.winMs){await fbSet(`jimbo_login_attempts/${u}`,{count:1,firstAttempt:now,lockedUntil:0});return;}const nc=(d.count||0)+1;await fbSet(`jimbo_login_attempts/${u}`,{...d,count:nc,lockedUntil:nc>=RATE.max?now+RATE.winMs:0});}
+const clearFails=u=>fbSet(`jimbo_login_attempts/${u}`,null);
 
 const CAT_FILTER={u:'Los Inolvidables',c:'Clásicos Contemporáneos',n:'Nueva Era',x:'custom'};
 const LIQUORS=['Gin','Vodka','Rum','Tequila','Whisky','Bourbon','Cognac','Triple Sec','Campari','Vermouth','Champagne','Amaretto','Kahlúa','Mezcal','Absenta','Brandy','Cointreau','Pisco','Cachaça'];
@@ -729,63 +644,41 @@ const QUIZ=[
   {id:'base',q:'¿Con qué base te apetece?',opts:[{label:'Gin',val:'gin'},{label:'Vodka',val:'vodka'},{label:'Rum / Ron',val:'rum'},{label:'Whisky / Bourbon',val:'whisky'},{label:'Tequila / Mezcal',val:'tequila'},{label:'Sin preferencia',val:'any'}]},
 ];
 
-const uPath = s => `jimbo_data/${currentUser}/${s}`;
-const isIBA = c => IBA_SEED.some(x=>x.id===c.id);
-const getImg = c => c.img||'';
-const canMake = c => myIngredients.size && c.ingredients.every(i=>myIngredients.has(i.n));
-const allIngs = () => { const s=new Set(); cocktails.forEach(c=>c.ingredients.forEach(i=>s.add(i.n))); return [...s].sort(); };
+const uPath=s=>`jimbo_data/${currentUser}/${s}`;
+const isIBA=c=>IBA_SEED.some(x=>x.id===c.id);
+const getImg=c=>c.img||'';
+const canMake=c=>myIngredients.size&&c.ingredients.every(i=>myIngredients.has(i.n));
+const allIngs=()=>{const s=new Set();cocktails.forEach(c=>c.ingredients.forEach(i=>s.add(i.n)));return[...s].sort();};
 
-window.setTheme = m => {
+window.setTheme=m=>{
   document.body.classList.toggle('dark-mode',m==='dark');
   document.getElementById('btnLight')?.classList.toggle('active',m==='light');
   document.getElementById('btnDark')?.classList.toggle('active',m==='dark');
-  if(currentUser) fbSet(uPath('prefs'),{gridSize,theme:m});
+  if(currentUser)fbSet(uPath('prefs'),{gridSize,theme:m});
 };
 
-async function seedCocktailsIfNeeded(){
-  setProgress(30,'Verificando base de datos…');
-  const existing = await fbGet('jimbo_cocktails');
-  if(!existing){
-    setProgress(45,'Cargando catálogo…');
-    const obj={}; IBA_SEED.forEach(c=>obj[c.id]=c);
-    await fbSet('jimbo_cocktails',obj);
-  } else {
-    // Añadir cócteles nuevos del seed que no estén en Firebase
-    const missing = IBA_SEED.filter(c=>!existing[c.id]);
-    if(missing.length){
-      setProgress(45,`Añadiendo ${missing.length} cócteles nuevos…`);
-      const updates={...existing};
-      missing.forEach(c=>updates[c.id]=c);
-      await fbSet('jimbo_cocktails',updates);
-    }
-  }
-  setProgress(65,'Catálogo listo.');
-}
+
 
 async function loadUserData(){
   setProgress(80,'Cargando tu perfil…');
-  const [rC,rM,rI]=await Promise.all([fbGet('jimbo_cocktails'),fbGet(uPath('my')),fbGet(uPath('ings'))]);
-  // Firebase tiene precedencia para cócteles existentes,
-  // pero siempre incluimos todos los IBA_SEED locales aunque no estén en Firebase aún
-  const fbCocktails = rC ? Object.values(rC) : [];
-  const fbIds = new Set(fbCocktails.map(c=>c.id));
-  const base = [...fbCocktails, ...IBA_SEED.filter(c=>!fbIds.has(c.id))];
+  // El catálogo base viene siempre del IBA_SEED local, no de Firebase
+  const[rM,rI]=await Promise.all([fbGet(uPath('my')),fbGet(uPath('ings'))]);
   const uc=await fbGet(uPath('custom_cocktails'));
-  cocktails=uc?[...base,...Object.values(uc)]:[...base];
+  cocktails=uc?[...IBA_SEED,...Object.values(uc)]:[...IBA_SEED];
   cocktails.sort((a,b)=>a.id-b.id);
   myData=rM?(typeof rM==='object'?rM:JSON.parse(rM)):{};
   myIngredients=rI&&Array.isArray(rI)?new Set(rI):new Set();
 }
 
-async function saveCocktailToDb(c){ if(isIBA(c)) await fbSet(`jimbo_cocktails/${c.id}`,c); else await fbSet(`${uPath('custom_cocktails')}/${c.id}`,c); }
-async function deleteCocktailFromDb(c){ if(!isIBA(c)) await fbSet(`${uPath('custom_cocktails')}/${c.id}`,null); }
+async function saveCocktailToDb(c){if(!isIBA(c))await fbSet(`${uPath('custom_cocktails')}/${c.id}`,c);}
+async function deleteCocktailFromDb(c){if(!isIBA(c))await fbSet(`${uPath('custom_cocktails')}/${c.id}`,null);}
 const saveMyData=()=>fbSet(uPath('my'),myData);
 
-window.setCat=(cat,el)=>{ selectedCat=cat; document.querySelectorAll('.chip-cat').forEach(c=>c.classList.remove('active')); el.classList.add('active'); render(); };
+window.setCat=(cat,el)=>{selectedCat=cat;document.querySelectorAll('.chip-cat').forEach(c=>c.classList.remove('active'));el.classList.add('active');render();};
 
 function buildChips(){
-  const w=document.getElementById('chipContainer'); w.innerHTML='';
-  LIQUORS.forEach(l=>{ const d=document.createElement('div'); d.className='chip'+(selectedLiquors.has(l)?' active':''); d.textContent=l; d.onclick=()=>{ selectedLiquors.has(l)?selectedLiquors.delete(l):selectedLiquors.add(l); d.classList.toggle('active'); render(); }; w.appendChild(d); });
+  const w=document.getElementById('chipContainer');w.innerHTML='';
+  LIQUORS.forEach(l=>{const d=document.createElement('div');d.className='chip'+(selectedLiquors.has(l)?' active':'');d.textContent=l;d.onclick=()=>{selectedLiquors.has(l)?selectedLiquors.delete(l):selectedLiquors.add(l);d.classList.toggle('active');render();};w.appendChild(d);});
 }
 
 window.render=function(){
@@ -793,20 +686,21 @@ window.render=function(){
   const tried=document.getElementById('triedOnly').checked;
   const cm=document.getElementById('canMake').checked;
   let list=[...cocktails];
-  if(q) list=list.filter(c=>c.name.toLowerCase().includes(q)||c.ingredients.some(i=>i.n.toLowerCase().includes(q)));
-  if(selectedCat==='x') list=list.filter(c=>c.cat==='Custom');
-  else if(selectedCat!=='all') list=list.filter(c=>c.cat===CAT_FILTER[selectedCat]);
-  if(selectedLiquors.size) list=list.filter(c=>!c.liquors||!c.liquors.length||[...selectedLiquors].every(l=>c.liquors.includes(l)));
-  if(tried) list=list.filter(c=>myData[c.id]&&myData[c.id].tried);
-  if(cm) list=list.filter(c=>canMake(c));
-  const grid=document.getElementById('grid'), empty=document.getElementById('emptyMsg');
+  if(q)list=list.filter(c=>c.name.toLowerCase().includes(q)||c.ingredients.some(i=>i.n.toLowerCase().includes(q)));
+  if(selectedCat==='x')list=list.filter(c=>c.cat==='Custom');
+  else if(selectedCat!=='all')list=list.filter(c=>c.cat===CAT_FILTER[selectedCat]);
+  if(selectedLiquors.size)list=list.filter(c=>!c.liquors||!c.liquors.length||[...selectedLiquors].every(l=>c.liquors.includes(l)));
+  if(tried)list=list.filter(c=>myData[c.id]&&myData[c.id].tried);
+  if(cm)list=list.filter(c=>canMake(c));
+  const grid=document.getElementById('grid'),empty=document.getElementById('emptyMsg');
   document.getElementById('countBadge').textContent=list.length+' de '+cocktails.length;
   if(!list.length){grid.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
   grid.innerHTML=list.map(c=>{
-    const my=myData[c.id]||{}, img=getImg(c);
+    const my=myData[c.id]||{},img=getImg(c);
     return `<div class="card" id="card-${c.id}" onclick="openModal(${c.id})">
-      ${img?`<img class="card-img" src="${sanitize(img)}" alt="${sanitize(c.name)}" loading="lazy">`:'' }
+      ${img?`<img class="card-img" src="${sanitize(img)}" alt="${sanitize(c.name)}" loading="lazy">`:''}
+      ${!img?`<div class="card-img-ph">${sanitize(c.emoji||'🍸')}</div>`:''}
       ${my.rating?`<div class="card-rating" style="background:#1C2B3Acc;color:var(--gold2)">${'★'.repeat(my.rating)}</div>`:''}
       <div class="card-body">
         <div class="card-name">${sanitize(c.name)}</div>
@@ -815,15 +709,12 @@ window.render=function(){
       </div>
     </div>`;
   }).join('');
-
 };
 
 window.openModal=function(id){
-  currentId=id; currentRating=0; editImgBase64=null;
-  const c=cocktails.find(x=>x.id===id); if(!c) return;
+  currentId=id;currentRating=0;editImgBase64=null;
+  const c=cocktails.find(x=>x.id===id);if(!c)return;
   const img=getImg(c);
-  const srcCard=document.getElementById('card-'+id);
-
   document.getElementById('modalTitle').textContent=c.name;
   document.getElementById('modalCat').textContent=c.cat;
   document.getElementById('modalTaste').textContent=c.taste||'';
@@ -854,26 +745,19 @@ window.openModal=function(id){
   if(c.historia){document.getElementById('historiaText').textContent=c.historia;historiaLoaded[id]=true;}
   loadMySection();
   switchTab('recipe',document.querySelector('.tabs .tab'));
-
-  const open=()=>{ document.getElementById('overlay').classList.add('open'); document.body.style.overflow='hidden'; };
-  open();
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
 };
 
-function loadMySection(){
-  const my=myData[currentId]||{};
-  document.getElementById('triedCheck').checked=!!my.tried;
-  document.getElementById('commentArea').value=my.comment||'';
-  currentRating=my.rating||0; renderStars();
-}
-function renderStars(){ document.getElementById('starsInput').innerHTML=[1,2,3,4,5].map(i=>`<span class="${i<=currentRating?'active':''}" onclick="setRating(${i})">★</span>`).join(''); }
+function loadMySection(){const my=myData[currentId]||{};document.getElementById('triedCheck').checked=!!my.tried;document.getElementById('commentArea').value=my.comment||'';currentRating=my.rating||0;renderStars();}
+function renderStars(){document.getElementById('starsInput').innerHTML=[1,2,3,4,5].map(i=>`<span class="${i<=currentRating?'active':''}" onclick="setRating(${i})">★</span>`).join('');}
 window.setRating=n=>{currentRating=n;renderStars();saveMy();};
-window.saveMy=async()=>{ if(!currentId) return; myData[currentId]={tried:document.getElementById('triedCheck').checked,rating:currentRating,comment:document.getElementById('commentArea').value}; await saveMyData(); render(); };
-window.handleFileUpload=()=>{ const f=document.getElementById('editImgFile').files[0]; if(!f) return; const r=new FileReader(); r.onload=e=>{editImgBase64=e.target.result;document.getElementById('editImgUrl').value='(imagen subida)';}; r.readAsDataURL(f); };
-window.saveImg=async()=>{ if(!currentId) return; const c=cocktails.find(x=>x.id===currentId); if(!c) return; c.img=editImgBase64||document.getElementById('editImgUrl').value.trim(); await saveCocktailToDb(c); openModal(currentId); render(); };
-window.addEditIngRow=(n='',a='')=>{ const row=document.createElement('div'); row.className='ing-item-row'; row.innerHTML=`<input type="text" placeholder="Ingrediente" value="${sanitize(n)}" style="flex:2"><input type="text" placeholder="Cantidad" value="${sanitize(a)}" style="flex:1"><button class="remove-ing" onclick="this.parentNode.remove()">×</button>`; document.getElementById('editIngList').appendChild(row); };
+window.saveMy=async()=>{if(!currentId)return;myData[currentId]={tried:document.getElementById('triedCheck').checked,rating:currentRating,comment:document.getElementById('commentArea').value};await saveMyData();render();};
+window.handleFileUpload=()=>{const f=document.getElementById('editImgFile').files[0];if(!f)return;const r=new FileReader();r.onload=e=>{editImgBase64=e.target.result;document.getElementById('editImgUrl').value='(imagen subida)';};r.readAsDataURL(f);};
+window.saveImg=async()=>{if(!currentId)return;const c=cocktails.find(x=>x.id===currentId);if(!c)return;c.img=editImgBase64||document.getElementById('editImgUrl').value.trim();await saveCocktailToDb(c);openModal(currentId);render();};
+window.addEditIngRow=(n='',a='')=>{const row=document.createElement('div');row.className='ing-item-row';row.innerHTML=`<input type="text" placeholder="Ingrediente" value="${sanitize(n)}" style="flex:2"><input type="text" placeholder="Cantidad" value="${sanitize(a)}" style="flex:1"><button class="remove-ing" onclick="this.parentNode.remove()">×</button>`;document.getElementById('editIngList').appendChild(row);};
 window.saveCocktailData=async()=>{
-  if(!currentId) return;
-  const c=cocktails.find(x=>x.id===currentId); if(!c) return;
+  if(!currentId)return;const c=cocktails.find(x=>x.id===currentId);if(!c)return;
   c.name=document.getElementById('editName').value.trim()||c.name;
   c.cat=document.getElementById('editCat').value;
   c.emoji=document.getElementById('editEmoji').value.trim()||c.emoji;
@@ -886,19 +770,19 @@ window.saveCocktailData=async()=>{
   await saveCocktailToDb(c);
   document.getElementById('editDataMsg').textContent='✓ Guardado.';document.getElementById('editDataMsg').className='status-msg ok';
   setTimeout(()=>document.getElementById('editDataMsg').textContent='',2500);
-  openModal(currentId); render();
+  openModal(currentId);render();
 };
-window.deleteCocktail=async()=>{ if(!confirm('¿Eliminar este cocktail?')) return; const c=cocktails.find(x=>x.id===currentId); await deleteCocktailFromDb(c); cocktails=cocktails.filter(x=>x.id!==currentId); closeModalDirect(); render(); };
+window.deleteCocktail=async()=>{if(!confirm('¿Eliminar este cocktail?'))return;const c=cocktails.find(x=>x.id===currentId);await deleteCocktailFromDb(c);cocktails=cocktails.filter(x=>x.id!==currentId);closeModalDirect();render();};
 window.switchTab=(tab,el)=>{
   const m={recipe:'tabRecipe',historia:'tabHistoria',editar:'tabEditar',miFicha:'tabMiFicha'};
   Object.values(m).forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
-  const a=document.getElementById(m[tab]); if(a) a.style.display='block';
+  const a=document.getElementById(m[tab]);if(a)a.style.display='block';
   document.querySelectorAll('.tabs .tab').forEach(t=>t.classList.remove('active'));
-  if(el?.classList) el.classList.add('active');
-  if(tab==='historia'&&currentId&&!historiaLoaded[currentId]) loadHistoria();
+  if(el?.classList)el.classList.add('active');
+  if(tab==='historia'&&currentId&&!historiaLoaded[currentId])loadHistoria();
 };
 async function loadHistoria(){
-  const c=cocktails.find(x=>x.id===currentId); if(!c) return;
+  const c=cocktails.find(x=>x.id===currentId);if(!c)return;
   const el=document.getElementById('historiaText');
   if(c.historia&&c.historia.length>30){el.textContent=c.historia;historiaLoaded[currentId]=true;return;}
   el.textContent='Buscando historia…';
@@ -910,12 +794,12 @@ async function loadHistoria(){
     else el.textContent=c.historia||'Historia no disponible.';
   }catch{el.textContent=c.historia||'Historia no disponible en este momento.';}
 }
-window.closeModal=e=>{if(e.target===document.getElementById('overlay')) closeModalDirect();};
+window.closeModal=e=>{if(e.target===document.getElementById('overlay'))closeModalDirect();};
 window.closeModalDirect=()=>{document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';currentId=null;};
-window.switchCfgTab=(p,el)=>{ document.querySelectorAll('.cfg-tab').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.cfg-panel').forEach(x=>x.classList.remove('active')); el.classList.add('active'); document.getElementById('cfg'+p.charAt(0).toUpperCase()+p.slice(1)).classList.add('active'); if(p==='despensa') buildIngGrid(); if(p==='personal'){const sl=document.getElementById('gridSizeSlider');if(sl)sl.value=gridSize;} };
+window.switchCfgTab=(p,el)=>{document.querySelectorAll('.cfg-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.cfg-panel').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('cfg'+p.charAt(0).toUpperCase()+p.slice(1)).classList.add('active');if(p==='despensa')buildIngGrid();if(p==='personal'){const sl=document.getElementById('gridSizeSlider');if(sl)sl.value=gridSize;}};
 window.openConfig=()=>{document.getElementById('configOverlay').classList.add('open');document.body.style.overflow='hidden';};
 window.logout=(auto=false)=>{
-  if(!auto&&!confirm('¿Cerrar sesión?')) return;
+  if(!auto&&!confirm('¿Cerrar sesión?'))return;
   clearTimeout(_sesTimer);clearTimeout(_sesWarn);clearInterval(_sesInterval);
   document.getElementById('sessionWarning').style.display='none';
   currentUser=null;currentUserPinHash=null;myData={};myIngredients=new Set();
@@ -923,13 +807,13 @@ window.logout=(auto=false)=>{
   document.getElementById('grid').style.gridTemplateColumns='';
   document.getElementById('app').style.display='none';
   closeModalDirect();closeConfig();closeQuiz();
-  if(auto) document.getElementById('loginErr').textContent='Sesión cerrada por inactividad.';
+  if(auto)document.getElementById('loginErr').textContent='Sesión cerrada por inactividad.';
   document.getElementById('userScreen').classList.remove('hidden');
   loadUserScreen();
 };
 window.closeConfig=()=>{document.getElementById('configOverlay').classList.remove('open');document.body.style.overflow='';};
-window.closeConfigModal=e=>{if(e.target===document.getElementById('configOverlay')) closeConfig();};
-window.addIngRow=(n='',a='')=>{ const row=document.createElement('div'); row.className='ing-item-row'; row.innerHTML=`<input type="text" placeholder="Ingrediente" value="${sanitize(n)}" style="flex:2"><input type="text" placeholder="Cantidad" value="${sanitize(a)}" style="flex:1"><button class="remove-ing" onclick="this.parentNode.remove()">×</button>`; document.getElementById('mIngList').appendChild(row); };
+window.closeConfigModal=e=>{if(e.target===document.getElementById('configOverlay'))closeConfig();};
+window.addIngRow=(n='',a='')=>{const row=document.createElement('div');row.className='ing-item-row';row.innerHTML=`<input type="text" placeholder="Ingrediente" value="${sanitize(n)}" style="flex:2"><input type="text" placeholder="Cantidad" value="${sanitize(a)}" style="flex:1"><button class="remove-ing" onclick="this.parentNode.remove()">×</button>`;document.getElementById('mIngList').appendChild(row);};
 window.saveManual=async()=>{
   const name=document.getElementById('mName').value.trim();
   if(!name){document.getElementById('manualMsg').textContent='El nombre es obligatorio.';document.getElementById('manualMsg').className='status-msg err';return;}
@@ -942,8 +826,8 @@ window.saveManual=async()=>{
   document.getElementById('manualMsg').textContent=`✓ "${sanitize(name)}" añadido.`;document.getElementById('manualMsg').className='status-msg ok';
   setTimeout(()=>document.getElementById('manualMsg').textContent='',3000);
 };
-function buildIngGrid(){ const all=allIngs(),grid=document.getElementById('ingGrid'); grid.innerHTML=all.map(i=>{const sid='ing_'+btoa(unescape(encodeURIComponent(i))).replace(/[^a-z0-9]/gi,'');return `<div class="ing-check"><input type="checkbox" id="${sid}" ${myIngredients.has(i)?'checked':''}><label for="${sid}">${sanitize(i)}</label></div>`;}).join(''); }
-window.saveIngredients=async()=>{ const all=allIngs();myIngredients=new Set();all.forEach(i=>{const sid='ing_'+btoa(unescape(encodeURIComponent(i))).replace(/[^a-z0-9]/gi,'');const el=document.getElementById(sid);if(el&&el.checked)myIngredients.add(i);});await fbSet(uPath('ings'),[...myIngredients]);render();document.getElementById('ingMsg').textContent='✓ Despensa guardada ('+myIngredients.size+' ingredientes).';document.getElementById('ingMsg').className='status-msg ok';setTimeout(()=>document.getElementById('ingMsg').textContent='',3000); };
+function buildIngGrid(){const all=allIngs(),grid=document.getElementById('ingGrid');grid.innerHTML=all.map(i=>{const sid='ing_'+btoa(unescape(encodeURIComponent(i))).replace(/[^a-z0-9]/gi,'');return `<div class="ing-check"><input type="checkbox" id="${sid}" ${myIngredients.has(i)?'checked':''}><label for="${sid}">${sanitize(i)}</label></div>`;}).join('');}
+window.saveIngredients=async()=>{const all=allIngs();myIngredients=new Set();all.forEach(i=>{const sid='ing_'+btoa(unescape(encodeURIComponent(i))).replace(/[^a-z0-9]/gi,'');const el=document.getElementById(sid);if(el&&el.checked)myIngredients.add(i);});await fbSet(uPath('ings'),[...myIngredients]);render();document.getElementById('ingMsg').textContent='✓ Despensa guardada ('+myIngredients.size+' ingredientes).';document.getElementById('ingMsg').className='status-msg ok';setTimeout(()=>document.getElementById('ingMsg').textContent='',3000);};
 window.changePin=async()=>{
   const old=document.getElementById('cpOld').value.trim(),n1=document.getElementById('cpNew').value.trim(),n2=document.getElementById('cpNew2').value.trim();
   const msg=document.getElementById('cpMsg');msg.className='status-msg';
@@ -959,11 +843,10 @@ const GRID_SIZES=[155,210,280,360,460];
 window.applyGridSize=val=>{
   gridSize=parseInt(val);
   document.getElementById('grid').style.gridTemplateColumns=`repeat(auto-fill,minmax(${GRID_SIZES[gridSize-1]}px,1fr))`;
-  const sl=document.getElementById('gridSizeSlider'); if(sl) sl.value=gridSize;
-  if(currentUser) fbSet(uPath('prefs'),{gridSize,theme:document.body.classList.contains('dark-mode')?'dark':'light'});
+  const sl=document.getElementById('gridSizeSlider');if(sl)sl.value=gridSize;
+  if(currentUser)fbSet(uPath('prefs'),{gridSize,theme:document.body.classList.contains('dark-mode')?'dark':'light'});
 };
 
-// Quiz
 window.openQuiz=()=>{quizAnswers={};quizStep=0;renderQuiz();document.getElementById('quizOverlay').classList.add('open');document.body.style.overflow='hidden';};
 window.closeQuiz=()=>{document.getElementById('quizOverlay').classList.remove('open');document.body.style.overflow='';};
 window.closeQuizModal=e=>{if(e.target===document.getElementById('quizOverlay'))closeQuiz();};
@@ -984,11 +867,10 @@ function renderQuiz(){
 }
 function scoreMatch(c){const q=c.q||{};let s=0;if(quizAnswers.sabor==='any'||(q.sabor||[]).includes(quizAnswers.sabor))s+=2;if(quizAnswers.alcohol==='any'||(q.alcohol||[]).includes(quizAnswers.alcohol))s+=2;if(quizAnswers.base==='any'||(q.base||[]).includes(quizAnswers.base))s+=2;return s;}
 function showQuizResult(){
-  // Solo recomienda cocktails que el usuario puede preparar con su despensa
-  const available = myIngredients.size ? cocktails.filter(c=>canMake(c)) : cocktails;
-  const pool_base = available.length ? available : cocktails; // fallback si despensa vacía
+  const available=myIngredients.size?cocktails.filter(c=>canMake(c)):cocktails;
+  const pool_base=available.length?available:cocktails;
   const scored=pool_base.map(c=>({c,s:scoreMatch(c)})).sort((a,b)=>b.s-a.s||Math.random()-.5);
-  const top=scored[0]?.s??0, pool=scored.filter(x=>x.s===top);
+  const top=scored[0]?.s??0,pool=scored.filter(x=>x.s===top);
   for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
   const picks=pool.slice(0,3).map(x=>x.c);
   if(picks.length<3){const rest=scored.filter(x=>x.s<top);for(let i=0;picks.length<3&&i<rest.length;i++)picks.push(rest[i].c);}
@@ -1011,19 +893,18 @@ function showQuizResult(){
   </div>`;
 }
 
-// PIN
 function startPinLockout(){
   _pinLocked=true;
   const secs=10*Math.pow(2,Math.max(0,Math.floor(_pinFailCount/3)-1));
-  let remaining=secs; const errEl=document.getElementById('pinError');
-  _pinBuf=''; updateDots(false);
-  const tick=()=>{ errEl.textContent=`Bloqueado ${remaining}s`; if(remaining<=0){_pinLocked=false;errEl.textContent='';return;} remaining--; _pinLockTimer=setTimeout(tick,1000); };
+  let remaining=secs;const errEl=document.getElementById('pinError');
+  _pinBuf='';updateDots(false);
+  const tick=()=>{errEl.textContent=`Bloqueado ${remaining}s`;if(remaining<=0){_pinLocked=false;errEl.textContent='';return;}remaining--;_pinLockTimer=setTimeout(tick,1000);};
   tick();
 }
-function openLoginPin(u){ _pendingLoginUser=u;_pinBuf='';_pinTarget='login';document.getElementById('pinTitle').textContent='Hola, '+u;document.getElementById('pinSub').textContent='Introduce tu PIN';document.getElementById('pinError').textContent='';updateDots(false);document.getElementById('pinOverlay').classList.add('open'); }
+function openLoginPin(u){_pendingLoginUser=u;_pinBuf='';_pinTarget='login';document.getElementById('pinTitle').textContent='Hola, '+u;document.getElementById('pinSub').textContent='Introduce tu PIN';document.getElementById('pinError').textContent='';updateDots(false);document.getElementById('pinOverlay').classList.add('open');}
 window.pinKey=async k=>{
-  if(_pinLocked||_pinBuf.length>=4) return;
-  _pinBuf+=k; updateDots(false);
+  if(_pinLocked||_pinBuf.length>=4)return;
+  _pinBuf+=k;updateDots(false);
   if(_pinBuf.length===4){
     const entered=_pinBuf;
     if(_pinTarget==='login'){
@@ -1049,20 +930,18 @@ window.pinKey=async k=>{
   }
 };
 window.pinDel=()=>{_pinBuf=_pinBuf.slice(0,-1);updateDots(false);document.getElementById('pinError').textContent='';};
-window.pinCancel=()=>{ _pinBuf='';_pinTarget=null;document.getElementById('pinError').textContent='';updateDots(false);document.getElementById('pinOverlay').classList.remove('open');document.body.style.overflow='';if(_pinLockTimer){clearTimeout(_pinLockTimer);_pinLockTimer=null;}_pinLocked=false;_pinFailCount=0; };
+window.pinCancel=()=>{_pinBuf='';_pinTarget=null;document.getElementById('pinError').textContent='';updateDots(false);document.getElementById('pinOverlay').classList.remove('open');document.body.style.overflow='';if(_pinLockTimer){clearTimeout(_pinLockTimer);_pinLockTimer=null;}_pinLocked=false;_pinFailCount=0;};
 function updateDots(err){for(let i=0;i<4;i++){const d=document.getElementById('d'+i);d.className='pin-dot'+(i<_pinBuf.length?(err?' error':' filled'):'');}}
 
-// Soporte de teclado para el PIN
-document.addEventListener('keydown', e => {
-  const pinVisible = document.getElementById('pinOverlay').classList.contains('open');
-  if(!pinVisible) return;
-  if(e.key>='0'&&e.key<='9') pinKey(e.key);
-  else if(e.key==='Backspace') pinDel();
-  else if(e.key==='Escape') pinCancel();
+document.addEventListener('keydown',e=>{
+  const pinVisible=document.getElementById('pinOverlay').classList.contains('open');
+  if(!pinVisible)return;
+  if(e.key>='0'&&e.key<='9')pinKey(e.key);
+  else if(e.key==='Backspace')pinDel();
+  else if(e.key==='Escape')pinCancel();
 });
 
-// Auth
-function loadUserScreen(){ document.getElementById('userListBox').style.display='block';document.getElementById('newUserForm').style.display='none';document.getElementById('loginName').value=''; }
+function loadUserScreen(){document.getElementById('userListBox').style.display='block';document.getElementById('newUserForm').style.display='none';document.getElementById('loginName').value='';}
 window.loginUser=async()=>{
   const name=document.getElementById('loginName').value.trim().toLowerCase().replace(/[^a-z0-9]/g,'');
   const err=document.getElementById('loginErr');
@@ -1070,14 +949,11 @@ window.loginUser=async()=>{
   const rl=await checkRate(name);
   if(!rl.ok){err.textContent=rl.msg;return;}
   err.textContent='Verificando…';
-  try{
-    const ud=await fbGet(`jimbo_users/${name}`);
-    if(!ud){await recordFail(name);err.textContent='Credenciales incorrectas.';return;}
-    err.textContent=''; openLoginPin(name);
-  }catch{err.textContent='Error de conexión.';}
+  try{const ud=await fbGet(`jimbo_users/${name}`);if(!ud){await recordFail(name);err.textContent='Credenciales incorrectas.';return;}err.textContent='';openLoginPin(name);}
+  catch{err.textContent='Error de conexión.';}
 };
-window.showNewUserForm=()=>{ document.getElementById('userListBox').style.display='none';document.getElementById('newUserForm').style.display='block';['nufName','nufPin','nufPin2'].forEach(id=>document.getElementById(id).value='');document.getElementById('nufErr').textContent=''; };
-window.showUserList=()=>{ document.getElementById('userListBox').style.display='block';document.getElementById('newUserForm').style.display='none';document.getElementById('loginName').value='';document.getElementById('loginErr').textContent=''; };
+window.showNewUserForm=()=>{document.getElementById('userListBox').style.display='none';document.getElementById('newUserForm').style.display='block';['nufName','nufPin','nufPin2'].forEach(id=>document.getElementById(id).value='');document.getElementById('nufErr').textContent='';};
+window.showUserList=()=>{document.getElementById('userListBox').style.display='block';document.getElementById('newUserForm').style.display='none';document.getElementById('loginName').value='';document.getElementById('loginErr').textContent='';};
 window.createUser=async()=>{
   const name=document.getElementById('nufName').value.trim().toLowerCase().replace(/[^a-z0-9]/g,'');
   const pin=document.getElementById('nufPin').value.trim(),pin2=document.getElementById('nufPin2').value.trim();
@@ -1092,18 +968,13 @@ window.createUser=async()=>{
 };
 async function loginAs(username,pinHashArr){
   currentUser=username;currentUserPinHash=pinHashArr;
-  
   setProgress(75,'Cargando tu colección…');
   document.getElementById('splashLoading').classList.remove('hidden');
   document.getElementById('userScreen').classList.add('hidden');
   try{await loadUserData();}catch{}
-  // Cargar preferencias de vista
   try{
     const prefs=await fbGet(uPath('prefs'));
-    if(prefs){
-      if(prefs.gridSize) gridSize=prefs.gridSize;
-      if(prefs.theme) setTheme(prefs.theme);
-    }
+    if(prefs){if(prefs.gridSize)gridSize=prefs.gridSize;if(prefs.theme)setTheme(prefs.theme);}
   }catch{}
   setProgress(100,'¡Listo!');
   setTimeout(()=>{
@@ -1116,9 +987,8 @@ async function loginAs(username,pinHashArr){
 }
 
 async function init(){
-  setProgress(10,'Preparando…');
-  setProgress(20,'Conectando…');
-  await seedCocktailsIfNeeded();
+  setProgress(50,'Preparando…');
+  await new Promise(r=>setTimeout(r,150));
   setProgress(100,'Listo.');
   await new Promise(r=>setTimeout(r,150));
   document.getElementById('splashLoading').classList.add('hidden');
