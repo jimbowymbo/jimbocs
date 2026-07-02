@@ -1,0 +1,19 @@
+{
+  "name": "jimbo-cocktail-society",
+  "version": "1.0.0",
+  "description": "Jimbo Cocktail Society – colección personal de cocktails IBA con Firebase.",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "cleancss -o dist/css/styles.css src/css/styles.css",
+    "build:js": "npm run build:js:data && npm run build:js:app",
+    "build:js:data": "terser src/js/data.js -o dist/js/data.js --module --compress --mangle",
+    "build:js:app": "terser src/js/app.js -o dist/js/app.js --module --compress --mangle",
+    "clean": "rm -rf dist",
+    "serve": "npx serve . -l 5500"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.31.0"
+  }
+}
