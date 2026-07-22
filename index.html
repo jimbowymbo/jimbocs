@@ -55,6 +55,7 @@
   <div id="userListBox" class="us-box">
     <div class="us-sec-title">Accede a tu perfil</div>
     <input class="nuf-input" id="loginName" placeholder="Nombre de usuario" maxlength="20" autocomplete="off" onkeydown="if(event.key==='Enter') loginUser()">
+    <label class="nuf-remember"><input type="checkbox" id="rememberMe" checked> Recordar mi usuario en este dispositivo</label>
     <div class="nuf-err" id="loginErr"></div>
     <button class="nuf-btn" onclick="loginUser()">Acceder</button>
     <div style="margin-top:1rem;text-align:center">
@@ -67,6 +68,7 @@
     <div class="nuf-hint">Solo letras y números, sin espacios.</div>
     <input class="nuf-input" id="nufPin" type="password" inputmode="numeric" placeholder="PIN de 4 dígitos" maxlength="4">
     <input class="nuf-input" id="nufPin2" type="password" inputmode="numeric" placeholder="Confirmar PIN" maxlength="4">
+    <label class="nuf-remember"><input type="checkbox" id="nufRemember" checked> Recordar mi usuario en este dispositivo</label>
     <div class="nuf-err" id="nufErr"></div>
     <button class="nuf-btn" onclick="createUser()">Crear y entrar</button>
     <button class="nuf-back" onclick="showUserList()">← Volver</button>
@@ -203,6 +205,12 @@
         <div class="manual-section"><label class="manual-label">Confirmar</label><input type="password" inputmode="numeric" class="edit-input" id="cpNew2" maxlength="4" placeholder="••••"></div>
         <button class="btn btn-full" onclick="changePin()">Actualizar PIN</button>
         <div class="status-msg" id="cpMsg"></div>
+        <div class="manual-section" style="margin-top:1.5rem;border-top:1px solid var(--border);padding-top:1rem">
+          <label class="manual-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:400;text-transform:none;letter-spacing:normal">
+            <input type="checkbox" id="deviceRemember" onchange="toggleRememberDevice(this.checked)"> Recordar mi usuario en este dispositivo
+          </label>
+          <div class="status-msg" id="deviceMsg"></div>
+        </div>
       </div>
       <div class="cfg-panel" id="cfgAdd">
         <div class="manual-section"><label class="manual-label">Nombre</label><input type="text" class="edit-input" id="mName" placeholder="Nombre del cocktail"></div>

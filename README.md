@@ -92,4 +92,63 @@ Scripts disponibles:
 - `npm run build:js` — solo JS
 - `npm run clean` — borra `dist/`
 
+## 🚀 Cómo publicarlo en GitHub (paso a paso)
 
+### 1. Crea el repositorio en GitHub
+1. Entra en [github.com/new](https://github.com/new).
+2. Ponle un nombre, por ejemplo `jimbo-cocktail-society`.
+3. Déjalo público (o privado, si prefieres) y **no** marques "Add a README" (ya
+   tenemos uno).
+4. Pulsa **Create repository**. GitHub te mostrará una URL como
+   `https://github.com/tu-usuario/jimbo-cocktail-society.git`.
+
+### 2. Sube el proyecto desde tu ordenador
+Desde la carpeta del proyecto:
+```bash
+cd jimbo-cocktail-society
+git init
+git add .
+git commit -m "Primera versión: proyecto reestructurado en múltiples archivos"
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/jimbo-cocktail-society.git
+git push -u origin main
+```
+(Sustituye `TU-USUARIO` por tu usuario real de GitHub.)
+
+### 3. Activa GitHub Pages
+1. En tu repositorio de GitHub, ve a **Settings → Pages**.
+2. En "Build and deployment" → "Source", elige **Deploy from a branch**.
+3. En "Branch", elige `main` y la carpeta `/ (root)`.
+4. Pulsa **Save**.
+5. Espera 1–2 minutos; GitHub te dará la URL pública, algo como:
+   `https://tu-usuario.github.io/jimbo-cocktail-society/`
+
+Listo: tu web ya está publicada y cualquiera puede entrar con esa URL.
+
+### 4. Actualizar la web tras hacer cambios
+```bash
+# edita lo que necesites en src/ y/o index.html
+npm run build          # si tocaste src/css o src/js
+git add .
+git commit -m "Describe aquí el cambio"
+git push
+```
+GitHub Pages se actualiza sola en cuanto detecta el `push` a `main` (unos segundos).
+
+## ⚠️ Notas importantes
+
+- **Claves de Firebase visibles en el código**: la configuración de Firebase
+  (`apiKey`, `databaseURL`, etc.) es pública por diseño en cualquier app de Firebase
+  del lado del cliente — no es un secreto que haya que ocultar. La seguridad real la
+  dan las **Reglas de seguridad** de tu Realtime Database. Antes de publicar,
+  revisa esas reglas en la consola de Firebase para asegurarte de que solo permiten
+  leer/escribir lo que corresponde a cada usuario.
+- **Historia generada por IA**: la función que pide la historia de un cóctel a la API
+  de Anthropic (`loadHistoria()`) hace la llamada directamente desde el navegador sin
+  clave de API — funciona dentro del entorno de vista previa de Claude, pero **una vez
+  publicado en GitHub Pages esa llamada fallará** (no hay clave ni backend que la
+  gestione). No es un problema grave: casi todos los cócteles ya traen su historia
+  guardada en `data.js`, así que la app simplemente mostrará ese texto guardado en vez
+  de generar uno nuevo. Si en el futuro quieres que esa función funcione en producción,
+  necesitarías un pequeño backend/proxy propio que guarde la clave de la API de forma
+  segura (por ejemplo, una Cloud Function de Firebase).

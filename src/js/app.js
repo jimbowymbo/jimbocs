@@ -14,6 +14,19 @@ const fbSet=async(p,v)=>{try{await set(ref(db,p),v);}catch{}};
 const setProgress=(pct,msg)=>{document.getElementById('splashBar').style.width=pct+'%';document.getElementById('splashMsg').textContent=msg;};
 const sha256=async s=>{try{const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(buf));}catch{return[];}};
 const hashEq=async(s,h)=>{if(!h||!Array.isArray(h))return false;const a=await sha256(s);return a.length===h.length&&a.every((b,i)=>b===h[i]);};
+const arraysEq=(a,b)=>Array.isArray(a)&&Array.isArray(b)&&a.length===b.length&&a.every((v,i)=>v===b[i]);
+
+// --- "Recordar este dispositivo" -------------------------------------------
+// Guarda solo el nombre de usuario y el hash de su PIN (ya calculado, nunca el
+// PIN en claro) en localStorage, para poder auto-iniciar sesión en este mismo
+// dispositivo sin volver a pedir usuario y PIN. Al cargar la app se vuelve a
+// comprobar contra Firebase que ese hash sigue siendo el vigente, así que si
+// el usuario cambia su PIN desde otro dispositivo, este queda invalidado.
+const REMEMBER_KEY='jimbo_remember_v1';
+const saveRemember=(u,h)=>{try{localStorage.setItem(REMEMBER_KEY,JSON.stringify({u,h}));}catch{}};
+const clearRemember=()=>{try{localStorage.removeItem(REMEMBER_KEY);}catch{}};
+const loadRemember=()=>{try{const raw=localStorage.getItem(REMEMBER_KEY);return raw?JSON.parse(raw):null;}catch{return null;}};
+const isDeviceRemembered=()=>{const r=loadRemember();return !!(r&&currentUser&&r.u===currentUser);};
 const escHtml=s=>typeof s==='string'?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'):'';
 const sanitize=s=>{if(typeof s!=='string')return '';return typeof DOMPurify!=='undefined'?DOMPurify.sanitize(s,{ALLOWED_TAGS:[],ALLOWED_ATTR:[]}):escHtml(s);};
 
@@ -22,7 +35,7 @@ const sanitize=s=>{if(typeof s!=='string')return '';return typeof DOMPurify!=='u
 let cocktails=[],currentUser=null,currentUserPinHash=null,myData={},myIngredients=new Set();
 let selectedLiquors=new Set(),selectedCat='all',currentId=null,currentRating=0,editImgBase64=null;
 let historiaLoaded={},quizAnswers={},quizStep=0;
-let _pinBuf='',_pinTarget=null,_pendingLoginUser=null,_pinFailCount=0,_pinLocked=false,_pinLockTimer=null;
+let _pinBuf='',_pinTarget=null,_pendingLoginUser=null,_pinFailCount=0,_pinLocked=false,_pinLockTimer=null,_pendingRemember=true;
 let gridSize=1;
 const SESSION_MS=30*60*1000,WARN_MS=25*60*1000;
 let _sesTimer=null,_sesWarn=null,_sesInterval=null;
@@ -218,9 +231,16 @@ async function loadHistoria(){
 window.closeModal=e=>{if(e.target===document.getElementById('overlay'))closeModalDirect();};
 window.closeModalDirect=()=>{document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';currentId=null;};
 window.switchCfgTab=(p,el)=>{document.querySelectorAll('.cfg-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.cfg-panel').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('cfg'+p.charAt(0).toUpperCase()+p.slice(1)).classList.add('active');if(p==='despensa')buildIngGrid();if(p==='personal'){const sl=document.getElementById('gridSizeSlider');if(sl)sl.value=gridSize;}};
-window.openConfig=()=>{document.getElementById('configOverlay').classList.add('open');document.body.style.overflow='hidden';};
+window.openConfig=()=>{document.getElementById('configOverlay').classList.add('open');document.body.style.overflow='hidden';const dr=document.getElementById('deviceRemember');if(dr)dr.checked=isDeviceRemembered();};
+window.toggleRememberDevice=checked=>{
+  const msg=document.getElementById('deviceMsg');
+  if(checked){saveRemember(currentUser,currentUserPinHash);msg.textContent='✓ Este dispositivo recordará tu usuario.';msg.className='status-msg ok';}
+  else{clearRemember();msg.textContent='Dispositivo olvidado: se pedirá usuario y PIN de nuevo.';msg.className='status-msg';}
+  setTimeout(()=>{msg.textContent='';},3000);
+};
 window.logout=(auto=false)=>{
   if(!auto&&!confirm('¿Cerrar sesión?'))return;
+  if(!auto)clearRemember(); // cierre de sesión manual = olvidar este dispositivo
   clearTimeout(_sesTimer);clearTimeout(_sesWarn);clearInterval(_sesInterval);
   document.getElementById('sessionWarning').style.display='none';
   currentUser=null;currentUserPinHash=null;myData={};myIngredients=new Set();
@@ -351,6 +371,7 @@ window.pinKey=async k=>{
       if(ok){
         await clearFails(_pendingLoginUser);_pinFailCount=0;_pinLocked=false;
         document.getElementById('pinOverlay').classList.remove('open');
+        if(_pendingRemember)saveRemember(_pendingLoginUser,ud.pinHash);else clearRemember();
         await loginAs(_pendingLoginUser,ud.pinHash);
       } else {
         await recordFail(_pendingLoginUser);_pinFailCount++;updateDots(true);
@@ -385,7 +406,13 @@ window.loginUser=async()=>{
   const rl=await checkRate(name);
   if(!rl.ok){err.textContent=rl.msg;return;}
   err.textContent='Verificando…';
-  try{const ud=await fbGet(`jimbo_users/${name}`);if(!ud){await recordFail(name);err.textContent='Credenciales incorrectas.';return;}err.textContent='';openLoginPin(name);}
+  try{
+    const ud=await fbGet(`jimbo_users/${name}`);
+    if(!ud){await recordFail(name);err.textContent='Credenciales incorrectas.';return;}
+    err.textContent='';
+    _pendingRemember=document.getElementById('rememberMe')?.checked??true;
+    openLoginPin(name);
+  }
   catch{err.textContent='Error de conexión.';}
 };
 window.showNewUserForm=()=>{document.getElementById('userListBox').style.display='none';document.getElementById('newUserForm').style.display='block';['nufName','nufPin','nufPin2'].forEach(id=>document.getElementById(id).value='');document.getElementById('nufErr').textContent='';};
@@ -400,6 +427,7 @@ window.createUser=async()=>{
   if(await fbGet(`jimbo_users/${name}`)){err.textContent='Ese nombre ya está en uso.';return;}
   const h=await sha256(pin);
   await fbSet(`jimbo_users/${name}`,{pinHash:h,createdAt:Date.now()});
+  if(document.getElementById('nufRemember')?.checked??true)saveRemember(name,h);else clearRemember();
   await loginAs(name,h);
 };
 async function loginAs(username,pinHashArr){
@@ -425,10 +453,32 @@ async function loginAs(username,pinHashArr){
 async function init(){
   setProgress(50,'Preparando…');
   await new Promise(r=>setTimeout(r,150));
+
+  // Si este dispositivo tiene un usuario recordado, comprobamos contra
+  // Firebase que su PIN no ha cambiado y, si coincide, entramos directamente
+  // sin pedir usuario ni PIN. Si algo falla o no coincide, seguimos con el
+  // flujo normal de acceso.
+  const rem=loadRemember();
+  if(rem&&rem.u&&rem.h){
+    try{
+      setProgress(70,'Recordando tu perfil…');
+      const ud=await fbGet(`jimbo_users/${rem.u}`);
+      if(ud&&arraysEq(ud.pinHash,rem.h)){
+        await loginAs(rem.u,ud.pinHash);
+        return;
+      }
+      clearRemember();
+    }catch{
+      // Sin conexión o error: no forzamos logout, simplemente dejamos que
+      // el usuario entre a mano y prerellenamos su nombre para agilizarlo.
+    }
+  }
+
   setProgress(100,'Listo.');
   await new Promise(r=>setTimeout(r,150));
   document.getElementById('splashLoading').classList.add('hidden');
   document.getElementById('userScreen').classList.remove('hidden');
   loadUserScreen();
+  if(rem&&rem.u){const ln=document.getElementById('loginName');if(ln&&!ln.value)ln.value=rem.u;}
 }
 init();
